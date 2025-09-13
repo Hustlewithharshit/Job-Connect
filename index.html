@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobConnect - Find Your Dream Job</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                💼 JobConnect
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Jobs</a></li>
+                <li><a href="#" onclick="showSavedJobs()">Saved Jobs</a></li>
+                <li><a href="#">Companies</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+            <div class="profile-section">
+                <div class="notification-bell">
+                    🔔
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="profile-avatar">JD</div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>🔍 Filter Jobs</h3>
+            
+            <div class="filter-group">
+                <label class="filter-label">Location</label>
+                <input type="text" class="filter-input" id="locationFilter" placeholder="City, state, or remote">
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Job Type</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="full-time" class="job-type-filter">
+                        <span>Full-time</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="part-time" class="job-type-filter">
+                        <span>Part-time</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="contract" class="job-type-filter">
+                        <span>Contract</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="remote" class="job-type-filter">
+                        <span>Remote</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Experience Level</label>
+                <select class="filter-select" id="experienceFilter">
+                    <option value="">Any experience</option>
+                    <option value="entry">Entry Level</option>
+                    <option value="mid">Mid Level</option>
+                    <option value="senior">Senior Level</option>
+                    <option value="lead">Lead/Management</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Salary Range</label>
+                <div class="salary-range">
+                    <input type="number" class="filter-input" id="minSalary" placeholder="Min">
+                    <span>to</span>
+                    <input type="number" class="filter-input" id="maxSalary" placeholder="Max">
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Company Size</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="startup" class="company-size-filter">
+                        <span>Startup (1-50)</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="medium" class="company-size-filter">
+                        <span>Medium (51-500)</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="large" class="company-size-filter">
+                        <span>Large (500+)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="clear-filters" onclick="clearAllFilters()">Clear All Filters</button>
+        </aside>
+
+        <main class="main-content">
+            <div class="search-bar">
+                <form class="search-form" onsubmit="searchJobs(event)">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search jobs, companies, or skills...">
+                    <button type="submit" class="search-btn">Search Jobs</button>
+                </form>
+            </div>
+
+            <div class="results-header">
+                <div class="results-count" id="resultsCount">
+                    Showing 12 of 248 jobs
+                </div>
+                <select class="sort-select" id="sortSelect" onchange="sortJobs()">
+                    <option value="relevance">Most Relevant</option>
+                    <option value="date">Most Recent</option>
+                    <option value="salary-high">Salary: High to Low</option>
+                    <option value="salary-low">Salary: Low to High</option>
+                </select>
+            </div>
+
+            <div id="jobsList">
+                <!-- Jobs will be dynamically inserted here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Job Detail Modal -->
+    <div id="jobModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modalContent">
+                <!-- Modal content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Profile Modal -->
+    <div id="companyModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCompanyModal()">&times;</button>
+            <div id="companyModalContent">
+                <!-- Company content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
